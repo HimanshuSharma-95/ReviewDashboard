@@ -5,23 +5,31 @@ import authservice from '../Appwrite/Auth';
 import { useNavigate } from 'react-router-dom';
 import { deletereviews } from '../Store/ReviewSlice';
 import { UserIcon } from '@heroicons/react/solid';
+import { login, logout } from '../Store/AuthSlice';
 
 function AccountCenter() {
-  const authStatus = useSelector((state) => state.auth.status);
-  const authUserData = useSelector((state) => state.auth.userData);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [status,setStatus] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const authUserData = useSelector((state) => state.auth.userData);
+  const authStatus = useSelector((state) => state.auth.status);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await authservice.getcurrentuser();
+        if (userData) {
+          dispatch(login(userData));
+        } else {
+          dispatch(logout());
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-  useEffect(()=>{
-
-setStatus(authStatus)
-
-  },[])
-
-
+    fetchUserData();
+  }, [dispatch]);
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -45,7 +53,7 @@ setStatus(authStatus)
 
   return (
     <>
-      {status ? (
+      {authStatus ? (
         <div className="flex items-center justify-center mt-20 ms-4 me-4 bg-gray-100">
           <div className="bg-white p-8 rounded-3xl shadow-md w-full max-w-md">
             <div className="flex flex-col items-center text-center">
@@ -76,10 +84,6 @@ setStatus(authStatus)
       ) : (
         <Login />
       )}
-
-      <button onClick={()=>{
-        console.log(status)
-      }}>kjbbj</button>
     </>
   );
 }

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from '../Components/Login';
 import authservice from '../Appwrite/Auth';
 import { useNavigate } from 'react-router-dom';
 import { deletereviews } from '../Store/ReviewSlice';
-import { UserIcon } from '@heroicons/react/solid'; // Importing HeroIcon user icon
+import { UserIcon } from '@heroicons/react/solid';
 
 function AccountCenter() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -12,6 +12,15 @@ function AccountCenter() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [status,setStatus] = useState(false)
+
+
+  useEffect(()=>{
+
+setStatus(authStatus)
+
+  },[authStatus])
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -35,7 +44,7 @@ function AccountCenter() {
 
   return (
     <>
-      {authStatus ? (
+      {status ? (
         <div className="flex items-center justify-center mt-20 ms-4 me-4 bg-gray-100">
           <div className="bg-white p-8 rounded-3xl shadow-md w-full max-w-md">
             <div className="flex flex-col items-center text-center">

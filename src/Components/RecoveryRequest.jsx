@@ -37,7 +37,7 @@ function RecoveryRequest() {
     }
 
     try {
-      await account.createRecovery(email, 'https://reviews-dashboard-eight.vercel.app/forgotpassword');
+      await account.createRecovery(email, 'https://reviewdashboard.netlify.app/forgotpassword');
       setStatus(true);
       setMessage('Password reset link sent to your email.');
     } catch (error) {

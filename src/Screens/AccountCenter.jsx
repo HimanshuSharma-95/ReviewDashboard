@@ -22,6 +22,7 @@ setStatus(authStatus)
   },[])
 
 
+
   const handleLogout = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -75,6 +76,10 @@ setStatus(authStatus)
       ) : (
         <Login />
       )}
+
+      <button onClick={()=>{
+        console.log(status)
+      }}>kjbbj</button>
     </>
   );
 }

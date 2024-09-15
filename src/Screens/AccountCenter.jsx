@@ -19,7 +19,7 @@ function AccountCenter() {
 
 setStatus(authStatus)
 
-  },[authStatus])
+  },[])
 
 
   const handleLogout = async (e) => {

@@ -37,7 +37,7 @@ function RecoveryRequest() {
     }
 
     try {
-      await account.createRecovery(email, 'http://localhost:5173/forgotpassword');
+      await account.createRecovery(email, 'https://reviews-dashboard-eight.vercel.app/forgotpassword');
       setStatus(true);
       setMessage('Password reset link sent to your email.');
     } catch (error) {

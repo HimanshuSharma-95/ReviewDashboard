@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,  // Use `index` for the default route under the parent path
+        index: true,
         element: <HomeScreen />,
       },
       {

@@ -2,8 +2,6 @@ Review Filter
 -
 
 
-About
--
 Review Filter is a web-based dashboard built using React.js and Appwrite, designed to help businesses manage their online reputation effectively. It enables owners to filter, view, and manage negative reviews while redirecting positive feedback to Google Business Profile.  
 By implementing this system for a local clothing brand, it successfully reduced new negative reviews by 40%.  
 

@@ -24,4 +24,6 @@ Tech Stack
 Frontend: **React.js, Tailwind CSS**  
 Backend & Database: **Appwrite**  
 Authentication: **Appwrite Auth**  
-Hosting: **Appwrite Functions**  
+Hosting: **Netlify**  
+
+[Visit Dashboard](reviewdashboard.netlify.app/)
